@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "../Image";
@@ -17,7 +17,7 @@ const ArtPage = (props) => {
   const [arts, setArts] = useState([]);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     // Fetch arts from the server
@@ -67,13 +67,13 @@ const ArtPage = (props) => {
       const response = await fetch(`http://localhost:5001/art/${artId}`, {
         method: "DELETE",
       });
-
+      navigate("/");
       if (response.ok) {
         // Remove the deleted art from the arts array
-        const updatedArts = arts.filter((art) => art._id !== artId);
+        // const updatedArts = arts.filter((art) => art._id !== artId);
 
         // Update the arts state in Redux store
-        dispatch(setArts({ arts: updatedArts }));
+        // dispatch(setArts({ arts: updatedArts }));
 
         toast.success("Art deleted successfully");
         navigate("/");
@@ -90,9 +90,9 @@ const ArtPage = (props) => {
 
   return (
     <>
-      {art && artist && (
-        <section className="mx-36 max-w-screen max-h-full p-8">
-          <div className="m-4 max-w-full rounded-md border border-gray-100 text-gray-600 shadow-md">
+      {art && artist && arts && (
+        <section className="mx-36 max-w-screen max-h-full p-8 ">
+          <div className="m-4 max-w-full rounded-md border border-gray-100 text-gray-600 shadow-lg">
             <div className="relative flex h-full flex-col text-gray-600 md:flex-row">
               <div className="relative p-10 md:w-4/6">
                 <div className="flex flex-col md:flex-row">
@@ -132,11 +132,11 @@ const ArtPage = (props) => {
                   </div>
                 </div>
 
-                {art.artistId === user._id &&
+                {user && art.artistId === user._id &&
                   (actor === true || actor === "artist") && (
                     <div className="mt-5">
                       {!art.isAvailable ? (
-                        <div className="text-red-500 font-bold">Out of Stock</div>
+                        <div className="text-red-500 font-bold">Sold</div>
                       ) : (
                         <button
                           onClick={handleDelete}
@@ -175,9 +175,10 @@ const ArtPage = (props) => {
                       {art.isAvailable ? (
                         <button
                           type="button"
-                          className="mr-2 mb-4 flex cursor-pointer items-center justify-center rounded-md bg-emerald-400 py-2 px-8 text-center text-white transition duration-150 ease-in-out hover:translate-y-1 hover:bg-emerald-500"
+                          className="mt-4 flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
                           onClick={handleBuy}
                         >
+
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="shrink-0 mr-3 h-5 w-5"
@@ -196,7 +197,7 @@ const ArtPage = (props) => {
                         </button>
                       ) : (
                         <div className="text-red-500 font-bold">
-                          Out of Stock
+                          Sold
                         </div>
                       )}
                       <ToastContainer />

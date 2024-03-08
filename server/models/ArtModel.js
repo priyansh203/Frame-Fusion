@@ -32,6 +32,7 @@ const artSchema = mongoose.Schema(
       default: true,
     },
     artPath: String, //arts
+    artistUserId: String,
   },
   { timestamps: true }
 );

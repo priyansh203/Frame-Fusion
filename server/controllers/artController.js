@@ -5,7 +5,7 @@ const moment = require("moment");
 //create
 const createArt = async (req, res) => {
     try {
-        const { artistId, description, artPath, price, size, category, title } = req.body;
+        const { artistId, description, artPath, price, size, category, title,artistUserId } = req.body;
 
         let artist = await Artist.findById(artistId);
         if (!artist) return res.status(404).json({ message: "Artist not found" });
@@ -22,6 +22,7 @@ const createArt = async (req, res) => {
             price,
             size,
             artPath,
+            artistUserId
         });
 
         const date = new Date();
@@ -60,13 +61,14 @@ const getArt = async (req, res) => {
     }
 };
 
-const deleteArt = async (req,res) => {
+const deleteArt = async (req, res) => {
     try {
         const artId = req.params.artId;
-        // const art = await Art.findById({_id: artId});
-        // if(!art)    return res.status(404).json({message: "Art not found"});
 
-        await Artist.updateMany({ arts: artId }, { $pull: { arts: artId } });
+        // Remove the artwork reference from all artists
+        await Artist.updateMany({ artIds: artId }, { $pull: { artIds: artId } });
+
+        // Delete the artwork
         await Art.deleteOne({ _id: artId });
 
         res.status(200).json({ message: "Artwork deleted successfully"});
@@ -74,6 +76,7 @@ const deleteArt = async (req,res) => {
         res.status(500).json({ message: err.message });
     }
 }
+
 
 
 module.exports = {

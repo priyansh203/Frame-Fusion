@@ -97,20 +97,21 @@ const PaymentOptionSelected = ({ art, user }) => {
     }
     return (
         <>
-            <div className="">
-                <h3 className="text-xl font-bold mb-2 text-gray-50 bg-blue-500 py-2 px-6 ">
-                    PAYMENT OPTION
-                </h3>
-            </div>
-            <div className="flex justify-center">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    onClick={handlePay}
-                >
-                    Pay
-                </button>
-            </div>
+  <div className="">
+    <h3 className="text-2xl font-bold mb-2 text-gray-50 bg-blue-500 py-2 px-6 "> {/* Increased font size to text-2xl */}
+      PAYMENT OPTION
+    </h3>
+  </div>
+  <div className="flex justify-center">
+    <button 
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline" 
+      onClick={handlePay}
+    >
+      Pay
+    </button>
+  </div>
+</>
 
-        </>
     )
 };
 

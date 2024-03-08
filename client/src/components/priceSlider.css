@@ -1,0 +1,26 @@
+/* Styles for the slider component */
+.slider {
+  height: 10px;
+  width: 100%;
+  background-color: #ddd;
+  margin-top: 10px;
+  position: relative; /* Add this line */
+}
+
+/* Styles for the slider thumb */
+.slider .thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #007bff;
+  cursor: grab;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  position: absolute; /* Add this line */
+  top: 50%; /* Add this line */
+  transform: translateY(-50%); /* Add this line */
+}
+
+/* Styles for the slider active state */
+.slider .thumb.active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
