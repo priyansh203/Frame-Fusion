@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const ArtCard = ({ price, title, artistId, artistUserId, imageUrl, isAvailable, _id }) => {
+  const location = useLocation();
+  const isOrdersPage = location.pathname === '/orders';
+
   return (
     <>
       <Link to={`/art/${_id}`}>
@@ -20,11 +23,14 @@ const ArtCard = ({ price, title, artistId, artistUserId, imageUrl, isAvailable, 
             <Link to={`/art/${_id}`} className="block">
               <h5 className="text-lg font-semibold text-gray-800 line-clamp-2">{title}</h5>
             </Link>
-            {!isAvailable && (
+            {!isAvailable && !isOrdersPage && (
               <p className="text-red-500 font-semibold">Sold</p>
             )}
-            <Link to={`/profile/artist/${artistId}`}>
-              <p>{artistUserId}</p>
+            <Link
+              to={`/profile/artist/${artistId}`}
+              className="italic hover:underline text-gray-400 text-sm"
+            >
+              {artistUserId}
             </Link>
             <div className="mt-2 flex justify-between items-center">
               <p className="text-lg font-bold text-gray-800">₹{price}</p>

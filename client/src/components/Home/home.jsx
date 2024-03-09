@@ -84,8 +84,8 @@ const Home = () => {
     } if (searchQuery.length > 0) {
       const filteredArtsByPrice = filteredArts.filter(art => art.price >= sliderValue[0] && art.price <= sliderValue[1]);
       setFilteredArts(filteredArtsByPrice);
-    } 
-  }, [sliderValue, arts, filteredArts, sliderValue]);
+    }
+  }, [sliderValue, arts, filteredArts, searchQuery,]);
 
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
@@ -117,7 +117,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-100">
       <Search
         img={img}
         currentImageIndex={currentImageIndex}
@@ -126,7 +126,7 @@ const Home = () => {
         searchQuery={searchQuery}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-5 max-h-full gap-4 mx-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 max-h-full gap-4 mx-4 pt-5">
         <div className="col-span-1 ">
           <div className="bg-white rounded-lg  shadow-lg ">
             <div className="font-bold text-xl text-black border-b">

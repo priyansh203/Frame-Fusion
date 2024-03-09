@@ -41,7 +41,7 @@ const PriceSlider = ({ max, min, onChange }) => {
           <input
             type="text"
             id="maxPrice"
-            value="max"
+            value="10000+"
             disabled
             onChange={(e) => handleChange([values[0], +e.target.value])}
             className="w-20 py-1 px-2 border border-gray-300 rounded mt-1 focus:outline-none focus:border-blue-500"

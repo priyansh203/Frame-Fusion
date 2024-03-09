@@ -96,12 +96,13 @@ const ArtPage = (props) => {
             <div className="relative flex h-full flex-col text-gray-600 md:flex-row">
               <div className="relative p-10 md:w-4/6">
                 <div className="flex flex-col md:flex-row">
-                  <h2 className="mb-auto text-3xl font-bold">
+
+                  <h2 className="mt-2 text-3xl font-bold">
                     <Name name={art.title} size="35px" /> {/* Increase the size to 35px */}
                   </h2>
 
                 </div>
-                <div className="mt-2 flex select flex-wrap items-center gap-1">
+                <div className="mt-2 flex select text-xl flex-wrap items-center gap-1">
                   <Link
                     to={`/profile/artist/${artist._id}`}
                     className="italic hover:underline text-gray-400"
@@ -109,14 +110,15 @@ const ArtPage = (props) => {
                     {artist.artistId}
                   </Link>
                 </div>
-                <div className="mt-2 flex select flex-wrap items-center gap-1">
+                <div className="mt-2 flex select text-2xl font-semibold flex-wrap items-center gap-1 text-bluegray-500 ">
                   {art.category}
                 </div>
-                <div className="mt-2 flex select-none flex-wrap items-center gap-1">
+
+                <div className="mt-2 flex select-none text-gray-600 flex-wrap items-center gap-1  text-sm">
                   {new Date(art.createdAt).toLocaleDateString()}
                 </div>
                 <div className="mt-2 flex select-none flex-wrap items-center gap-1">
-                  {art.size}
+                  {art.size} in
                 </div>
                 <div className="lg:col-span-3 mt-3">
                   <div className="border-b border-gray-300">
