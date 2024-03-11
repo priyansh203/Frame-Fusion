@@ -49,13 +49,13 @@ const Login = () => {
     const BACKEND_URL = "http://localhost:5001";
     try {
 
-      
+
       const response = await axios.post(`${BACKEND_URL}/api/auth/${select === 'artist' ? 'loginArtist' : 'loginUser'}`, formData);
       const { token, user } = response.data;
       console.log(response.data)
       const { _id, actor } = jwtDecode(token);
       // console.log(444444, user)
-      
+
       dispatch(
         setLogin({
           userId: _id,
@@ -64,11 +64,11 @@ const Login = () => {
           actor: actor,
           user: user,
         })
-        );
+      );
 
-        const responseArts = await fetch("http://localhost:5001/art/getArts"); // Replace with your API endpoint
-        const arts = await responseArts.json();
-        dispatch(setArts({arts}));
+      const responseArts = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
+      const arts = await responseArts.json();
+      dispatch(setArts({ arts }));
 
       if (actor === "artist") {
         dispatch(

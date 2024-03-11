@@ -28,7 +28,7 @@ const ProfileInfo = ({ user }) => {
   const handleSave = async () => {
 
     try {
-      const response = await axios.put("http://localhost:5001/artist/updateArtist", formData);
+      const response = await axios.put("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/updateArtist", formData);
       console.log("Updated:", response.data);
       dispatch(updateDetails(response.data.artist));
       setEditable(false);

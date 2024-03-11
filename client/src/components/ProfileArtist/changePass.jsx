@@ -76,7 +76,7 @@ const ChangePass = ({ user }) => {
       };
 
       const response = await axios.put(
-        "http://localhost:5001/artist/changePass",
+        "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/changePass",
         data
       );
 
@@ -98,99 +98,99 @@ const ChangePass = ({ user }) => {
 
   return (
     <div className="col-span-4 bg-gray-100 p-4 rounded-lg mt-4">
-  <div className="flex items-center justify-between border-b border-gray-300 pb-2">
-    <div className="font-bold text-lg">Change Password</div>
-    {!editable ? (
-      <button
-        className="text-blue-500 font-semibold hover:underline"
-        onClick={handleEdit}
-      >
-        Edit
-      </button>
-    ) : (
-      <button
-        className="text-blue-500 font-semibold hover:underline"
-        onClick={handleSave}
-      >
-        Save
-      </button>
-    )}
-  </div>
-  <form className="mt-6"> {/* Increase mt-6 to add more vertical space */}
-    <div className="mx-5 space-y-6"> {/* Increase space-y-6 for more vertical space */}
-      <div>
-        <label htmlFor="currentPassword" className="block mb-1">
-          Current Password
-        </label>
-        <div className="relative">
-          <input
-            type={showCurrentPassword ? "text" : "password"}
-            id="currentPassword"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-            name="currentPassword"
-            required
-            disabled={!editable}
-            value={formData.currentPassword}
-            onChange={handleChange}
-          />
+      <div className="flex items-center justify-between border-b border-gray-300 pb-2">
+        <div className="font-bold text-lg">Change Password</div>
+        {!editable ? (
           <button
-            type="button"
-            className="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none"
-            onClick={toggleCurrentPasswordVisibility}
+            className="text-blue-500 font-semibold hover:underline"
+            onClick={handleEdit}
           >
-            {showCurrentPassword ? EyeIconOpen : EyeIconClose}
+            Edit
           </button>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="newPassword" className="block mb-1">
-          New Password
-        </label>
-        <div className="relative">
-          <input
-            type={showNewPassword ? "text" : "password"}
-            id="newPassword"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-            name="newPassword"
-            required
-            disabled={!editable}
-            value={formData.newPassword}
-            onChange={handleChange}
-          />
+        ) : (
           <button
-            type="button"
-            className="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none"
-            onClick={toggleNewPasswordVisibility}
+            className="text-blue-500 font-semibold hover:underline"
+            onClick={handleSave}
           >
-            {showNewPassword ? EyeIconOpen : EyeIconClose}
+            Save
           </button>
+        )}
+      </div>
+      <form className="mt-6"> {/* Increase mt-6 to add more vertical space */}
+        <div className="mx-5 space-y-6"> {/* Increase space-y-6 for more vertical space */}
+          <div>
+            <label htmlFor="currentPassword" className="block mb-1">
+              Current Password
+            </label>
+            <div className="relative">
+              <input
+                type={showCurrentPassword ? "text" : "password"}
+                id="currentPassword"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                name="currentPassword"
+                required
+                disabled={!editable}
+                value={formData.currentPassword}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none"
+                onClick={toggleCurrentPasswordVisibility}
+              >
+                {showCurrentPassword ? EyeIconOpen : EyeIconClose}
+              </button>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="newPassword" className="block mb-1">
+              New Password
+            </label>
+            <div className="relative">
+              <input
+                type={showNewPassword ? "text" : "password"}
+                id="newPassword"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                name="newPassword"
+                required
+                disabled={!editable}
+                value={formData.newPassword}
+                onChange={handleChange}
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center px-2 focus:outline-none"
+                onClick={toggleNewPasswordVisibility}
+              >
+                {showNewPassword ? EyeIconOpen : EyeIconClose}
+              </button>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="confirmPassword" className="block mb-1">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              name="confirmPassword"
+              required
+              disabled={!editable}
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
+          </div>
+          {errorMessage && (
+            <p className="text-red-500 mt-2">{errorMessage}</p>
+          )}
+          {successMessage && (
+            <p className="text-green-500 mt-2">{successMessage}</p>
+          )}
         </div>
-      </div>
-      <div>
-        <label htmlFor="confirmPassword" className="block mb-1">
-          Confirm Password
-        </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-          name="confirmPassword"
-          required
-          disabled={!editable}
-          value={formData.confirmPassword}
-          onChange={handleChange}
-        />
-      </div>
-      {errorMessage && (
-        <p className="text-red-500 mt-2">{errorMessage}</p>
-      )}
-      {successMessage && (
-        <p className="text-green-500 mt-2">{successMessage}</p>
-      )}
-    </div>
-  </form>
+      </form>
 
-</div>
+    </div>
 
   );
 };

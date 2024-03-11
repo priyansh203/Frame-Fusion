@@ -11,7 +11,7 @@ const ProfileArtist = () => {
   const { userId: reqParam } = useParams();
   const [artistArts, setArtistArts] = useState([]);
 
-  
+
   const [currentUser, setUser] = useState(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const ProfileArtist = () => {
       try {
         // Make a GET request to your backend endpoint to fetch user data
         const response = await axios.get(
-          `http://localhost:5001/artist/${reqParam}`
+          `https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/${reqParam}`
         ); // Replace "/api/users/profile" with your actual backend endpoint
         setUser(response.data);
       } catch (error) {
@@ -29,27 +29,27 @@ const ProfileArtist = () => {
 
     fetchUser();
   }, [reqParam]);
-  
+
   useEffect(() => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await fetch("http://localhost:5001/art/getArts"); // Replace with your API endpoint
+        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
         const data = await response.json();
         setArts(data);
       } catch (error) {
         console.error("Error fetching arts:", error);
       }
     };
-  
+
     fetchArts();
   }, []);
-  
+
 
   useEffect(() => {
-  const filteredArts = currentUser ? arts.filter((art) => art.artistId === currentUser._id) : [];
-  setArtistArts(filteredArts);
-}, [arts, currentUser]);
+    const filteredArts = currentUser ? arts.filter((art) => art.artistId === currentUser._id) : [];
+    setArtistArts(filteredArts);
+  }, [arts, currentUser]);
   console.log(currentUser);
 
   return (
@@ -165,19 +165,19 @@ const ProfileArtist = () => {
             </section>
             <section className="bg-blueGray-200 m-0 flex justify-center">
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                  {artistArts.map((art) => (
-                    <div key={art._id} className="w-full">
-                      <ArtCard
-                        price={art.price}
-                        title={art.title}
-                        artistId={art.artistId}
-                        imageUrl={art.artPath}
-                        isAvailable={art.isAvailable}
-                        _id={art._id}
-                      />
-                    </div>
-                  ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                {artistArts.map((art) => (
+                  <div key={art._id} className="w-full">
+                    <ArtCard
+                      price={art.price}
+                      title={art.title}
+                      artistId={art.artistId}
+                      imageUrl={art.artPath}
+                      isAvailable={art.isAvailable}
+                      _id={art._id}
+                    />
+                  </div>
+                ))}
 
               </div>
             </section>

@@ -23,7 +23,7 @@ const ArtPage = (props) => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await fetch("http://localhost:5001/art/getArts"); // Replace with your API endpoint
+        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
         const data = await response.json();
         setArts(data);
 
@@ -37,13 +37,13 @@ const ArtPage = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const artResponse = await fetch(`http://localhost:5001/art/${artId}`);
+        const artResponse = await fetch(`https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/${artId}`);
         const artData = await artResponse.json();
         setArt(artData);
 
         if (artData) {
           const artistResponse = await fetch(
-            `http://localhost:5001/artist/${artData.artistId}`
+            `https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/${artData.artistId}`
           );
           const artistData = await artistResponse.json();
           setArtist(artistData);
@@ -64,7 +64,7 @@ const ArtPage = (props) => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:5001/art/${artId}`, {
+      const response = await fetch(`https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/${artId}`, {
         method: "DELETE",
       });
       navigate("/");

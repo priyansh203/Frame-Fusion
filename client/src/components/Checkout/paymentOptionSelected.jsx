@@ -12,7 +12,7 @@ const PaymentOptionSelected = ({ art, user }) => {
         const currency = "INR";
         const receiptId = art._id;
 
-        const response = await fetch("http://localhost:5001/order", {
+        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order", {
             method: "POST",
             body: JSON.stringify({
                 amount,
@@ -37,7 +37,7 @@ const PaymentOptionSelected = ({ art, user }) => {
 
                 const body = { ...response };
                 console.log(body);
-                const validateRes = await fetch("http://localhost:5001/order/validate", {
+                const validateRes = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order/validate", {
                     method: "POST",
                     body: JSON.stringify(body), //stringify is used to convert js Object to JSON string
                     headers: { //header contain additional info about request
@@ -47,7 +47,7 @@ const PaymentOptionSelected = ({ art, user }) => {
                 const jsonRes = await validateRes.json();
                 console.log(jsonRes);
 
-                const updateArtworkAndUserResponse = await fetch("http://localhost:5001/order/updateAfterPayment", {
+                const updateArtworkAndUserResponse = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order/updateAfterPayment", {
                     method: "POST",
                     body: JSON.stringify({
                         art: art,
@@ -59,8 +59,8 @@ const PaymentOptionSelected = ({ art, user }) => {
                 });
 
                 // Parsing the JSON response
-                const {updatedUser} = await updateArtworkAndUserResponse.json();
-                console.log(555,updatedUser);
+                const { updatedUser } = await updateArtworkAndUserResponse.json();
+                console.log(555, updatedUser);
 
 
                 if (jsonRes.msg === "success") {
@@ -97,20 +97,20 @@ const PaymentOptionSelected = ({ art, user }) => {
     }
     return (
         <>
-  <div className="">
-    <h3 className="text-2xl font-bold mb-2 text-gray-50 bg-blue-500 py-2 px-6 "> {/* Increased font size to text-2xl */}
-      PAYMENT OPTION
-    </h3>
-  </div>
-  <div className="flex justify-center">
-    <button 
-      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline" 
-      onClick={handlePay}
-    >
-      Pay
-    </button>
-  </div>
-</>
+            <div className="">
+                <h3 className="text-2xl font-bold mb-2 text-gray-50 bg-blue-500 py-2 px-6 "> {/* Increased font size to text-2xl */}
+                    PAYMENT OPTION
+                </h3>
+            </div>
+            <div className="flex justify-center">
+                <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline"
+                    onClick={handlePay}
+                >
+                    Pay
+                </button>
+            </div>
+        </>
 
     )
 };

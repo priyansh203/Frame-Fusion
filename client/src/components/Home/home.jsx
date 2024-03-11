@@ -42,7 +42,7 @@ const Home = () => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await fetch("http://localhost:5001/art/getArts"); // Replace with your API endpoint
+        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
         const data = await response.json();
         setArts(data);
         setFilteredArts(data);
