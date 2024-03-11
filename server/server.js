@@ -39,6 +39,12 @@ app.use("/api/auth", authRoutes);
 app.use("/art",artRoutes)
 app.use("/order",orderRoutes);
 
+app.get("/",(req, res)=>{
+
+  res.json({message:"demodemodemo"})
+})
+
+
 app.post('/api/upload', async (req, res) => {
   try {
       let { filename, contentType } = req.body;
