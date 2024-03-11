@@ -7,13 +7,15 @@ const app = express()
 // const cookieParser = require("cookie-parser");
 const path = require('path');
 const { putObject } = require('./s3');
-app.use(cors(
-  {
-    origin:["https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app"],
-    methods: ["POST","GET"],
-    credentials: true
-  }
-));
+app.use(cors({
+  origin: [
+    "https://frame-fusion.vercel.app",
+    "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app"
+  ],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
+
 
 const artistRoutes = require("./routes/artistRoutes");
 const userRoutes = require("./routes/userRoutes");
