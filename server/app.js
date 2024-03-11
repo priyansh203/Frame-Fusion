@@ -7,14 +7,8 @@ const app = express()
 // const cookieParser = require("cookie-parser");
 const path = require('path');
 const { putObject } = require('./s3');
-app.use(cors({
-  origin: [
-    "https://frame-fusion.vercel.app",
-    "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app"
-  ],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+
+require("./config/configuration").connect();
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://frame-fusion.vercel.app");
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -40,7 +34,7 @@ if(!process.env.JWT_SECERT){
 
 
 //mongoose connection
-require("./config/configuration").connect();
+app.use(cors({credentials: true, origin: true})); 
 
 //use bodyparser
 app.use(express.json({ limit: "50mb" }));
