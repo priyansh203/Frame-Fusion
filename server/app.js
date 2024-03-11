@@ -7,7 +7,13 @@ const app = express()
 // const cookieParser = require("cookie-parser");
 const path = require('path');
 const { putObject } = require('./s3');
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://frame-fusion.vercel.app"],
+    methods: ["POST","GET"],
+    credentials: true
+  }
+));
 
 const artistRoutes = require("./routes/artistRoutes");
 const userRoutes = require("./routes/userRoutes");
