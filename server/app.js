@@ -9,7 +9,7 @@ const path = require('path');
 const { putObject } = require('./s3');
 app.use(cors(
   {
-    origin:["https://frame-fusion.vercel.app"],
+    origin:["https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app"],
     methods: ["POST","GET"],
     credentials: true
   }
