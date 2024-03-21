@@ -5,7 +5,7 @@ import Input from './input';
 import { useNavigate, Link } from 'react-router-dom';
 
 const SignUp = () => {
-  const BACKEND_URL = "http://localhost:5001";
+  const BACKEND_URL = "https://frame-fusion.onrender.com";
   const [formData, setFormData] = useState({
     artistId: '',
     name: '',

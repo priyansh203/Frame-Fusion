@@ -46,7 +46,7 @@ const Login = () => {
     setErrors({ ...validationErrors });
     if (validationErrors) return;
 
-    const BACKEND_URL = "http://localhost:5001";
+    const BACKEND_URL = "https://frame-fusion.onrender.com";
     try {
 
 
