@@ -11,7 +11,7 @@ const Select = ({ label, value, onChange }) => {
         value={value}
         onChange={onChange}
       >
-        <option value="user">User</option>
+        <option value="user">Buyer</option>
         <option value="artist">Artist</option>
       </select>
     </div>

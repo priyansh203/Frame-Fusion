@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Input from "./input";
+import watermark from 'watermarkjs';
+import watermarkImage from './assets/watermark.jpg';
+
 
 const AddArt = () => {
   const [file, setFile] = useState(null);
@@ -84,9 +87,15 @@ const AddArt = () => {
       const responseData = await response.json();
       console.log("Server Response:", responseData);
 
+      const watermarkedFile = await watermark([file, watermarkImage])
+        .image(watermark.image.lowerRight(0.5))
+        .then(function (img) {
+          return img.src;
+        });
+
       const uploadResponse = await fetch(responseData.url, {
         method: "PUT",
-        body: file,
+        body: watermarkedFile,
         headers: {
           "Content-Type": file.type,
         },

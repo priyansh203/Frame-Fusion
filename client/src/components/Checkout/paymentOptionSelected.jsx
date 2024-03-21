@@ -25,7 +25,7 @@ const PaymentOptionSelected = ({ art, user }) => {
         });
         const order = await response.json();
 
-        var options = {
+        let options = {
             "key": "rzp_test_cpQCkptOoWacuj", // Enter the Key ID generated from the Dashboard
             amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency,
@@ -81,7 +81,7 @@ const PaymentOptionSelected = ({ art, user }) => {
             }
         };
 
-        var rzp1 = new window.Razorpay(options);
+        var rzp1 = new window.Razorpay(options)
         rzp1.on('payment.failed', function (response) {
             alert(response.error.code);
             alert(response.error.description);

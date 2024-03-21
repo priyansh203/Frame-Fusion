@@ -202,8 +202,8 @@ const ArtPage = (props) => {
                           Sold
                         </div>
                       )}
-                      <ToastContainer />
                     </div>
+                    <ToastContainer />
                     <ul className="mt-8 space-y-2">
                       <li className="flex items-center text-left text-sm font-medium text-gray-600">
                         <svg

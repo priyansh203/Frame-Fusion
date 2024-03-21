@@ -11,6 +11,7 @@ import Search from "./search";
 import Arts from "./Arts";
 import './home.css';
 import PriceSlider from "../PriceSlider";
+import axios from "axios";
 
 const Home = () => {
   const name = useSelector((state) => state.name);
@@ -20,6 +21,7 @@ const Home = () => {
   const [filteredArts, setFilteredArts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sliderValue, setSliderValue] = useState([1, 10000]);
+  const [loading, setLoading] = useState(true);
 
   const fuse = new Fuse(arts, {
     keys: ["title", "artistUserId"],
@@ -42,15 +44,27 @@ const Home = () => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
-        const data = await response.json();
+        const response = await axios.get("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts");
+        const data = response.data;
         setArts(data);
         setFilteredArts(data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching arts:", error);
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error("Server Error:", error.response.status);
+          console.error("Error Message:", error.response.data);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("No response from server:", error.request);
+        } else {
+          // Something else happened in making the request
+          console.error("Error:", error.message);
+        }
+        setLoading(false);
       }
     };
-
+  
     fetchArts();
   }, []);
 
@@ -162,9 +176,15 @@ const Home = () => {
           </div>
         </div>
         <div className="col-span-4">
-          <div className="bg-white rounded-lg p-8 shadow-lg">
-            <Arts filteredArts={filteredArts} />
-          </div>
+          {loading ? ( // Conditional rendering of loading animation
+            <div className="flex justify-center items-center h-full">
+              <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+          ) : (
+            <div className="bg-white rounded-lg p-8 shadow-lg">
+              <Arts filteredArts={filteredArts} />
+            </div>
+          )}
         </div>
       </div>
     </div>

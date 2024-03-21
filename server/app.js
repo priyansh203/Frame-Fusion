@@ -7,6 +7,13 @@ const app = express();
 const path = require('path');
 const { putObject } = require('./s3');
 
+app.use((req, res, next) => {
+  res.setHeader('Referrer-Policy', 'same-origin'); // or any other value
+  next();
+});
+
+app.use(cors({ credentials: true, origin: true }));
+
 require("./config/configuration").connect();
 
 if (!process.env.JWT_SECERT) {
@@ -15,7 +22,6 @@ if (!process.env.JWT_SECERT) {
 }
 
 // CORS middleware
-app.use(cors({ credentials: true, origin: "https://frame-fusion.vercel.app" }));
 
 // Body parser middleware
 app.use(express.json({ limit: "50mb" }));
