@@ -66,7 +66,7 @@ const Login = () => {
         })
       );
 
-      const responseArts = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
+      const responseArts = await fetch("https://frame-fusion.onrender.com/art/getArts"); // Replace with your API endpoint
       const arts = await responseArts.json();
       dispatch(setArts({ arts }));
 

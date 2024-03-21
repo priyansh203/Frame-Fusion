@@ -28,7 +28,7 @@ const ProfileInfo = ({ user }) => {
     // For now, we'll just log the updated data
     console.log("Updated Data:", formData);
     try {
-      await axios.put("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/user/updateUserDetails", formData);
+      await axios.put("https://frame-fusion.onrender.com/user/updateUserDetails", formData);
       dispatch(updateDetails(formData));
       setEditable(false);
 

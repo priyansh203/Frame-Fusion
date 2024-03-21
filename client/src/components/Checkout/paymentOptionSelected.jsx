@@ -12,7 +12,7 @@ const PaymentOptionSelected = ({ art, user }) => {
         const currency = "INR";
         const receiptId = art._id;
 
-        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order", {
+        const response = await fetch("https://frame-fusion.onrender.com/order", {
             method: "POST",
             body: JSON.stringify({
                 amount,
@@ -37,7 +37,7 @@ const PaymentOptionSelected = ({ art, user }) => {
 
                 const body = { ...response };
                 console.log(body);
-                const validateRes = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order/validate", {
+                const validateRes = await fetch("https://frame-fusion.onrender.com/order/validate", {
                     method: "POST",
                     body: JSON.stringify(body), //stringify is used to convert js Object to JSON string
                     headers: { //header contain additional info about request
@@ -47,7 +47,7 @@ const PaymentOptionSelected = ({ art, user }) => {
                 const jsonRes = await validateRes.json();
                 console.log(jsonRes);
 
-                const updateArtworkAndUserResponse = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/order/updateAfterPayment", {
+                const updateArtworkAndUserResponse = await fetch("https://frame-fusion.onrender.com/order/updateAfterPayment", {
                     method: "POST",
                     body: JSON.stringify({
                         art: art,

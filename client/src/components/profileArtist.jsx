@@ -19,7 +19,7 @@ const ProfileArtist = () => {
       try {
         // Make a GET request to your backend endpoint to fetch user data
         const response = await axios.get(
-          `https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/${reqParam}`
+          `https://frame-fusion.onrender.com/artist/${reqParam}`
         ); // Replace "/api/users/profile" with your actual backend endpoint
         setUser(response.data);
       } catch (error) {
@@ -34,7 +34,7 @@ const ProfileArtist = () => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts"); // Replace with your API endpoint
+        const response = await fetch("https://frame-fusion.onrender.com/art/getArts"); // Replace with your API endpoint
         const data = await response.json();
         setArts(data);
       } catch (error) {

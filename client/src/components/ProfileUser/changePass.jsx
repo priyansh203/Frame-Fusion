@@ -76,7 +76,7 @@ const ChangePass = ({ user }) => {
       };
 
       const response = await axios.put(
-        "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/user/changePass",
+        "https://frame-fusion.onrender.com/user/changePass",
         data
       );
 

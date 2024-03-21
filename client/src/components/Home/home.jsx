@@ -44,7 +44,7 @@ const Home = () => {
     // Fetch arts from the server
     const fetchArts = async () => {
       try {
-        const response = await axios.get("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/art/getArts");
+        const response = await axios.get("https://frame-fusion.onrender.com/art/getArts");
         const data = response.data;
         setArts(data);
         setFilteredArts(data);

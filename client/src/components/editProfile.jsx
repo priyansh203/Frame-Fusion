@@ -31,7 +31,7 @@ const EditProfile = (props) => {
         e.preventDefault();
         // Handle form submission, update profile picture, name, and bio
         // You can use formData.name, formData.bio, and formData.picture here
-        const response = await fetch('https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/api/upload', {
+        const response = await fetch('https://frame-fusion.onrender.com/api/upload', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const EditProfile = (props) => {
             console.log(data);
 
             try {
-                const response = await axios.put("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/updateArtist", data);
+                const response = await axios.put("https://frame-fusion.onrender.com/artist/updateArtist", data);
                 console.log("Updated:", response.data);
                 dispatch(updateDetails(response.data.artist));
                 navigate(`/profile/artist/${userId}`);

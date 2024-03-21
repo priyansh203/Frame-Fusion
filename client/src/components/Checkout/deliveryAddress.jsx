@@ -20,7 +20,7 @@ const DeliveryAddress = ({ user, selectedItem, changeSelected }) => {
         try {
             const updatedUser = { ...user, address: address }; // Create a new object with updated address
             await axios.put(
-                "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/user/updateUserDetails",
+                "https://frame-fusion.onrender.com/user/updateUserDetails",
                 updatedUser
             );
             dispatch(updateDetails(updatedUser));

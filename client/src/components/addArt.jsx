@@ -40,7 +40,7 @@ const AddArt = () => {
     const fetchData = async () => {
       try {
         const artistResponse = await fetch(
-          `https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/${userId}`
+          `https://frame-fusion.onrender.com/artist/${userId}`
         );
         const artistData = await artistResponse.json();
         setArtist(artistData);
@@ -72,7 +72,7 @@ const AddArt = () => {
 
     setLoading(true);
 
-    const response = await fetch("https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/api/upload", {
+    const response = await fetch("https://frame-fusion.onrender.com/api/upload", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const AddArt = () => {
 
       try {
         const response = await axios.post(
-          "https://frame-fusion-u7ow-528hkxlmw-priyansh203s-projects.vercel.app/artist/addArt",
+          "https://frame-fusion.onrender.com/artist/addArt",
           data
         );
         console.log("Art added:", response.data);
